@@ -7,7 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var app = express();
+var app = express(mongodb+srv://<anshitha velagapudi>:<ammulusmiley>@cluster0-wifx7.azure.mongodb.net/local_library?retryWrites=true&w=majority);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
