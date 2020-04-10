@@ -24,10 +24,10 @@ mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-var authors = []
-var genres = []
-var books = []
-var bookinstances = []
+let authors = []
+let genres = []
+let books = []
+let bookinstances = []
 
 function authorCreate(first_name, family_name, d_birth, d_death, cb) {
   authordetail = {first_name:first_name , family_name: family_name }
@@ -79,7 +79,8 @@ function bookCreate(title, summary, isbn, author, genre, cb) {
     console.log('New Book: ' + book);
     books.push(book)
     cb(null, book)
-  }  );
+ 
+}  );
 }
 
 
@@ -91,7 +92,7 @@ function bookInstanceCreate(book, imprint, due_back, status, cb) {
   if (due_back != false) bookinstancedetail.due_back = due_back
   if (status != false) bookinstancedetail.status = status
     
-  var bookinstance = new BookInstance(bookinstancedetail);    
+  let bookinstance = new BookInstance(bookinstancedetail);    
   bookinstance.save(function (err) {
     if (err) {
       console.log('ERROR CREATING BookInstance: ' + bookinstance);
