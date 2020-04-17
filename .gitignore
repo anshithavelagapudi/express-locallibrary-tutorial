@@ -1,3 +1,9 @@
+- The controller handles the input event from the user interface, often via a registered handler or callback, and converts the event into an appropriate user action, understandable for the model. The controller notifies the model of the user action, possibly resulting in a change in the model's state.
+
+- Controller – Mediates between the model and the view. Responsible for the action taken by the user on the View component.
+
+
+
 # Logs
 logs
 *.log
