@@ -6,7 +6,7 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
+const catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
 const dotenv = require('dotenv')
 const app = express();
 dotenv.config({ path: '.env' })
