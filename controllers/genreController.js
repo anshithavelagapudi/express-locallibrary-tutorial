@@ -210,4 +210,3 @@ exports.genre_update_post = [
         }
     }
 ];
-© 2020 GitHub, Inc.
