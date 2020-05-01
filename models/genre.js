@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
+let Schema = mongoose.Schema;
 
 var GenreSchema = new Schema({
     name: {type: String, required: true, min: 3, max: 100}
