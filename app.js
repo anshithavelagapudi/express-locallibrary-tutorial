@@ -7,11 +7,13 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
-const dotenv = require('dotenv')
+const compression= require('compression');
+var helmet=require('helmet');
 
 
 var app = express();
-dotenv.config({ path: '.env' })
+app.use(helmet());
+//dotenv.config({ path: '.env' })
 
 
 const mongoose = require('mongoose');
@@ -31,6 +33,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
