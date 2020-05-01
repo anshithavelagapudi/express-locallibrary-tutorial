@@ -17,8 +17,10 @@ app.use(helmet());
 
 
 const mongoose = require('mongoose');
-const dev_db_url = process.env.ATLAS_URI;
-const mongoDB = process.env.MONGODB_URI || dev_db_url;
+//const dev_db_url = process.env.ATLAS_URI;
+var dev_db_url = 'mongodb+srv://anshithavelagapudi:Anshi@537@cluster0-mbdj7.mongodb.net/local_library?retryWrites=true'
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
+var mongoDB = 'mongodb+srv://anshithavelagapudi:Anshi@537@cluster0-mbdj7.mongodb.net/local_library?retryWrites=true';
 mongoose.connect(mongoDB, { useNewUrlParser: true  ,   useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
