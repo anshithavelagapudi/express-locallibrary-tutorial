@@ -1,7 +1,9 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+var mongoose = require('mongoose');
+var moment = require('moment'); // For date handling.
 
-const AuthorSchema = new Schema({
+var Schema = mongoose.Schema;
+
+var AuthorSchema = new Schema({
   first_name: { type: String, required: true, max: 100 },
   family_name: { type: String, required: true, max: 100 },
   date_of_birth: { type: Date },
@@ -10,7 +12,7 @@ const AuthorSchema = new Schema({
 
 // Virtual for author "full" name.
 AuthorSchema.virtual('name').get(function() {
-  let fullname = '';
+  var fullname = '';
 
   if (this.first_name && this.family_name) {
     fullname = this.family_name + ', ' + this.first_name;
@@ -28,7 +30,7 @@ AuthorSchema.virtual('url').get(function() {
 });
 
 AuthorSchema.virtual('lifespan').get(function() {
-  let lifetime_string = '';
+  var lifetime_string = '';
   if (this.date_of_birth) {
     lifetime_string = moment(this.date_of_birth).format('MMMM Do, YYYY');
   }

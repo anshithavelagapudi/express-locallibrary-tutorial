@@ -6,24 +6,21 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
-const compression= require('compression');
-var helmet=require('helmet');
+var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
 
+var compression = require('compression');
+var helmet = require('helmet');
 
 var app = express();
-app.use(helmet());
-//dotenv.config({ path: '.env' })
 
 
-const mongoose = require('mongoose');
-//const dev_db_url = process.env.ATLAS_URI;
-var dev_db_url = 'mongodb+srv://anshithavelagapudi:Anshi@537@cluster0-mbdj7.mongodb.net/local_library?retryWrites=true'
-//var mongoDB = process.env.MONGODB_URI || dev_db_url;
-var mongoDB = 'mongodb+srv://anshithavelagapudi:Anshi@537@cluster0-mbdj7.mongodb.net/local_library?retryWrites=true';
-mongoose.connect(mongoDB, { useNewUrlParser: true  ,   useUnifiedTopology: true });
+// Set up mongoose connection
+var mongoose = require('mongoose');
+var dev_db_url = 'mongodb+srv://cooluser:coolpassword@cluster0-mbdj7.mongodb.net/local_library?retryWrites=true'
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
+mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
-const db = mongoose.connection;
+var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
@@ -35,7 +32,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(compression());
+app.use(helmet());
+app.use(compression()); // Compress all routes
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
