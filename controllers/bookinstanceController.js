@@ -1,6 +1,6 @@
-var BookInstance = require('../models/bookinstance')
-var Book = require('../models/book')
-var async = require('async')
+let BookInstance = require('../models/bookinstance')
+let Book = require('../models/book')
+let async = require('async')
 
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
@@ -26,7 +26,7 @@ exports.bookinstance_detail = function(req, res, next) {
     .exec(function (err, bookinstance) {
       if (err) { return next(err); }
       if (bookinstance==null) { // No results.
-          var err = new Error('Book copy not found');
+          let err = new Error('Book copy not found');
           err.status = 404;
           return next(err);
         }
